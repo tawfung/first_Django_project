@@ -4,11 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Desktop Background</title>
-    <link rel="stylesheet" href="{% static "css/mystyle.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"/>
 </head>
 <body>
 <h1>  Hi, this is my desktop background!  </h1>
-<img src="{% static "image/1.jpeg" %}" alt="Uh Oh, didn't show!">
+<h2>  Here you are access records!  </h2>
+
+<div class="django2">
+    {% if access_records %}
+    <table>
+        <thead>
+            <th> Site Name</th>
+            <th> Date Accessed</th>
+        </thead>
+            {% for acc in access_records %}
+                <tr>
+                    <td> {{ acc.name }}</td>
+                    <td> {{ acc.date }}</td>
+                </tr>
+            {% endfor %}
+
+    </table>
+
+    {% else %}
+    <p>NO ACCESS RECORDS FOUND!</p>
+    {% endif %}
+
+
+
+</div>
+
+{#<img src="{% static "image/1.jpeg" %}" alt="Uh Oh, didn't show!">#}
 {#{{ insert_me }}#}
 </body>
 </html>
