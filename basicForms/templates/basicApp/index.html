@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>#}
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}" />
 </head>
 <body>
 
+        {% if latest_question_list %}
+        <ul>
+        {% for question in latest_question_list %}
+{#            <li><a href="/app/{{ question.id }}/">{{ question.question_text }}</a></li>#}
+{#            <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>#}
+            <li><a href="{% url 'basicApp:detail' question.id %}">{{ question.question_text }}</a></li>
+        {% endfor %}
+        </ul>
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
 
-    <div class="container">
-        <div class="jumbotron">
-             <h1>Welcome to homepage</h1>
-                <h2>Go to the /app/form to fill out the form!</h2>
-        </div>
-    </div>
 </body>
 </html>
