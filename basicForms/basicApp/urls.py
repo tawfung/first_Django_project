@@ -5,7 +5,8 @@ app_name = 'basicApp'
 
 urlpatterns = [
     # path('', views.index, name='index'),
-    # path('form/', views.form_name_view, name = 'form_name'),
+    path('formName/', views.form_name_view, name = 'form_name'),
+    path('formQuestion/', views.form_question_view, name = 'form_question'),
     # path('<int:question_id>/', views.detail, name = 'detail'),
     # path('<int:question_id>/results/', views.results, name = 'results'),
     # path('<int:question_id>/vote/', views.vote, name = 'vote'),

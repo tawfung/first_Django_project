@@ -27,9 +27,24 @@ def form_name_view(request):
             print("EMAIL: " + form.cleaned_data['email'])
             print("SOMETHING: " + form.cleaned_data['text'])
 
-
-
     return render(request,'basicApp/form_page.html',{'form':form})
+
+
+def form_question_view(request):
+    formq= forms.FormQuestion()
+
+    if request.method == 'POST':
+        formq = forms.FormQuestion(request.POST)
+
+        if formq.is_valid():
+            print('YOU ADDED NEW QUESTION SUCCESS!')
+            print("QUESTION: " +formq.cleaned_data['question'])
+            content = formq.cleaned_data['question']
+            new_q=Question.objects.create(question_text=content, pub_date=timezone.now())
+
+    return render(request,'basicApp/form_pageq.html',{'formq':formq})
+
+
 
 def detail(request, question_id):
     # try:

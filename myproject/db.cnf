@@ -1,0 +1,5 @@
+[client]
+database = boards
+user = root
+password = trace
+default-character-set = utf8
