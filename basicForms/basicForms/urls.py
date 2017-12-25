@@ -19,7 +19,7 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path('app/', include('basicApp.urls')),
+    path('', include('basicApp.urls')),
     path('admin/', admin.site.urls),
     # url(r'^dynamic_forms/',include('dynamic_forms.urls', namespace='dynamic_forms')),
 ]

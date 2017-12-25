@@ -67,6 +67,7 @@ def results(request, question_id):
 # def vote(request, question_id):
 #     return HttpResponse("You're VOTING on question %s." % question_id)
 
+
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
@@ -126,3 +127,19 @@ class ResultsView(generic.DetailView):
     template_name = 'basicApp/results.html'
 
 # Leave the rest of the views (detail, results, vote) unchanged
+
+class IndexView(generic.ListView):
+    template_name = 'basicApp/index.html'
+    context_object_name = 'latest_question_list'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Question.objects.order_by('-pub_date')[:5]
+
+class DetailView(generic.DetailView):
+    model = Question
+    template_name = 'basicApp/detail.html'
+
+class ResultsView(generic.DetailView):
+    model = Question
+    template_name = 'basicApp/results.html'
